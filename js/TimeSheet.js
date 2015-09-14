@@ -251,7 +251,7 @@
          *
          *      sheetClass : "",
          *      start : function(ev){...}
-         *      end : function(ev){...}
+         *      end : function(ev,selectedArea){...}
          *      remarks : false
          * }
          *
