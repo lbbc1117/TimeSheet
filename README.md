@@ -29,8 +29,16 @@ TimeSheet.js relies on jQuery, so jQuery must be included in your page before Ti
 There is a css file TimeSheet.css, and it is not a must when using TimeSheet.js. One can customize the style of sheets by their own css code.
 
 ## Initialization
+        
 ### Initial options:
 ```javascript
+/*   TimeSheet should be binded on element TBODY, and its subelements have some default classes as follow:
+*
+*   sheetHead ---- class: .TimeSheet-head
+*   colHead ---- class: .TimeSheet-colHead
+*   rowHead ---- class: .TimeSheet-rowHead
+*   cell ---- class: .TimeSheet-cell
+*/
 options :
 {
    data : {
