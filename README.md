@@ -110,7 +110,6 @@ start : function(ev){
 ###Specify a callback for ending selecting event:
 ```javascript
 /*
-* 获取单元格状态
 * @param ev 
 * @param selectedArea : the index of the top-left cell and the bottom-right cell -- {topLeft:[0,1], bottomRight:[2,2]}
 * */
