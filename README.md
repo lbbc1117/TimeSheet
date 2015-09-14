@@ -57,9 +57,9 @@ data : {
 ```
 
 ###To specify the column headers:
-"name" is to set the text shown in the header
-"title" is to set the text shown when the header is hovered
-"style" is css code to customize the style of the header
+"name" is to set the text shown in the header.
+"title" is to set the text shown when the header is hovered.
+"style" is css code to customize the style of the header.
 ```javascript
 data : {
    colHead : [
@@ -71,8 +71,8 @@ data : {
 Row headers shall be initialized the same way.
 
 ###To specify the sheet header:
-"name" is to set the text shown in the header
-"style" is css code to customize the style of the header
+"name" is to set the text shown in the header.
+"style" is css code to customize the style of the header.
 ```javascript
 data : {
    sheetHead : {name:"headName",style:"width,height,background,color,font"}
