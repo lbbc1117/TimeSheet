@@ -60,8 +60,8 @@ data : {
 ```javascript
 data : {
    colHead : [
-   {name:"name1",title:"",style:"width,background,color,font"},
-   {name:"name2",title:"",style:"width,background,color,font"},...
+    {name:"name1",title:"",style:"width,background,color,font"},
+    {name:"name2",title:"",style:"width,background,color,font"},...
    ]
 }
 ```
@@ -82,4 +82,48 @@ It is a 2D, row-major ordered array. The value of it's basic elements has to be 
 data : {
    sheetData : [[0,1,1,0,0],[...],[...],...]
 }
+```
+
+###Get the state of a single cell:
+```javascript
+/*
+* 获取单元格状态
+* @param cellIndex ：[1,2]
+* @return : 0 or 1
+* */
+sheet.getCellState([0,0]);
+```
+
+###Get the states of a single row:
+```javascript
+/*
+ * 获取某行所有单元格状态
+ * @param row ：2
+ * @return : [1,0,0,...,0,1]
+ * */
+sheet.getRowStates(2);
+```
+
+###Get the states of whole sheet:
+```javascript
+/*
+ * 获取表格所有单元格状态
+ * @return : [[1,0,0,...,0,1],[1,0,0,...,0,1],...,[1,0,0,...,0,1]]
+ * */
+sheet.getSheetStates();
+```
+
+###Set the remark text of a single row:
+```javascript
+/*
+* 设置某行的说明文字
+* @param row : 2,
+* @param text : '说明'
+* */
+sheet.setRemark(2,"说明");
+```
+
+###Clean the sheet(set all cells to 0):
+```javascript
+sheet.clean();
 ```
