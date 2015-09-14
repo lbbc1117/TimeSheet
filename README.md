@@ -28,8 +28,8 @@ TimeSheet.js relies on jQuery, so jQuery must be included in your page before Ti
 
 There is a css file TimeSheet.css, and it is not a must when using TimeSheet.js. One can customize the style of sheets by their own css code.
 
-## API
-###Initialization options:
+## Initialization
+### Initial options:
 ```javascript
 options :
 {
@@ -87,6 +87,7 @@ data : {
 }
 ```
 
+## API
 ###Get the state of a single cell:
 ```javascript
 /*
