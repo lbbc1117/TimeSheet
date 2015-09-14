@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>TimeSheet example</title>
+
+    <style>
+        body{
+            font-size:12px;
+            color:#777777;
+        }
+        label{
+            width:80px;
+            display:inline-block;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/TimeSheet.css" type="text/css" media="screen">
+</head>
+<body>
+
+<div style="padding:15px 0 10px;">
+    <button class="J_sheetControl" id="J_timingDisable">Disable</button>
+    <button class="J_sheetControl" id="J_timingEnable">Enable</button>
+    <button class="J_sheetControl" id="J_timingClean">Clean</button>
+    <button class="J_sheetControl" id="J_timingSubmit">Submit</button>
+    <button class="J_sheetControl" id="J_timingIsFull">IsFull</button>
+    <div style="padding:15px 0 5px;">
+        <label>单元格索引:</label><input type="text" placeholder="0,0" id="J_cellIndex" value="0,0"/> <button class="J_sheetControl" id="J_timingGetCell">GetCell</button>
+    </div>
+    <div style="padding:10px 0;">
+        <label>行索引:</label><input type="number" placeholder="0" id="J_rowIndex" value="0"/>  <button class="J_sheetControl" id="J_timingGetRow">GetRow</button>
+    </div>
+</div>
+<div id="J_calenderWrapper">
+    <table>
+        <thead></thead>
+        <tbody id="J_timedSheet">
+
+        </tbody>
+    </table>
+    <p style="color:#757a7d;font-size:12px;padding:10px 0;">提示：单元格与列首可通过右键点击或框选来取消选择。</p>
+</div>
+
+<p id="J_dataDisplay" style="color:#aaaaaa;font-family: 'Arial';">
+
+</p>
+
+<script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./js/TimeSheet.js"></script>
+<script type="text/javascript">
+
+    var dimensions = [12,24];
+
+    var dayList = [
+        {name:"2015-09-01"},{name:"2015-09-02"},{name:"2015-09-03"},{name:"2015-09-04"},{name:"2015-09-05"},
+        {name:"2015-09-06"},{name:"2015-09-07"},{name:"2015-09-08"},{name:"2015-09-09"},{name:"2015-09-10"},
+        {name:"2015-09-11"},{name:"2015-09-12"}
+    ];
+
+    var hourList = [
+        {name:"00",title:"00:00-01:00"},{name:"01",title:"01:00-02:00"},{name:"02",title:"02:00-03:00"},{name:"03",title:"03:00-04:00"},
+        {name:"04",title:"04:00-05:00"},{name:"05",title:"05:00-06:00"},{name:"06",title:"06:00-07:00"},{name:"07",title:"07:00-08:00"},
+        {name:"08",title:"08:00-09:00"},{name:"09",title:"09:00-10:00"},{name:"10",title:"10:00-11:00"},{name:"11",title:"11:00-12:00"},
+        {name:"12",title:"12:00-13:00"},{name:"13",title:"13:00-14:00"},{name:"14",title:"14:00-15:00"},{name:"15",title:"15:00-16:00"},
+        {name:"16",title:"16:00-17:00"},{name:"17",title:"17:00-18:00"},{name:"18",title:"18:00-19:00"},{name:"19",title:"19:00-20:00"},
+        {name:"20",title:"20:00-21:00"},{name:"21",title:"21:00-22:00"},{name:"22",title:"22:00-23:00"},{name:"23",title:"23:00-次日00:00"}
+    ];
+
+    var sheetData = [
+        [1,1,1,0,1,0,1,1,1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0],
+        [0,1,0,0,1,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,0,0,1,0,1,0,1,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0],
+        [0,1,0,0,1,0,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,0,0,1,0,1,0,1,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [1,1,1,0,1,0,1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,0],
+        [1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0],
+        [1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,0],
+        [0,0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0],
+        [1,1,1,0,1,0,1,0,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+    ];
+
+    var updateRemark = function(sheet){
+
+        var sheetStates = sheet.getSheetStates();
+        var rowsCount = dimensions[0];
+        var colsCount = dimensions[1];
+        var rowRemark = [];
+        var rowRemarkLen = 0;
+        var remarkHTML = '';
+
+        for(var row= 0, rowStates=[]; row<rowsCount; ++row){
+            rowRemark = [];
+            rowStates = sheetStates[row];
+            for(var col=0; col<colsCount; ++col){
+                if(rowStates[col]===0 && rowStates[col-1]===1){
+                    rowRemark[rowRemarkLen-1] += (col<=10?'0':'')+col+':00';
+                }else if(rowStates[col]===1 && (rowStates[col-1]===0 || rowStates[col-1]===undefined)){
+                    rowRemarkLen = rowRemark.push((col<=10?'0':'')+col+':00-');
+                }
+                if(rowStates[col]===1 && col===colsCount-1){
+                    rowRemark[rowRemarkLen-1] += '次日00:00';
+                }
+            }
+            remarkHTML = rowRemark.join("，");
+            sheet.setRemark(row,remarkHTML===''?'未设置':remarkHTML);
+        }
+    };
+
+    $(document).ready(function(){
+
+        var sheet = $("#J_timedSheet").TimeSheet({
+            data: {
+                dimensions : dimensions,
+                colHead : hourList,
+                rowHead : dayList,
+                sheetHead : {name:"日期\\时间"},
+                sheetData : sheetData
+            },
+            remarks : {
+                title : "说明",
+                default : "未设置"
+            },
+            end : function(ev,selectedArea){
+                updateRemark(sheet);
+            }
+        });
+
+        updateRemark(sheet);
+
+        $("#J_timingDisable").click(function(ev){
+            sheet.disable();
+        });
+
+        $("#J_timingEnable").click(function(ev){
+            sheet.enable();
+        });
+
+        $("#J_timingClean").click(function(ev){
+            sheet.clean();
+        });
+
+        $("#J_timingSubmit").click(function(ev){
+
+            var sheetStates = sheet.getSheetStates();
+            var rowsCount = dimensions[0];
+            var $submitDataDisplay = $("#J_dataDisplay") ;
+
+            $submitDataDisplay.html("<b>Raw Data Submitted:</b><br/>[<br/>");
+
+            for(var row= 0, rowStates=[]; row<rowsCount; ++row){
+                rowStates = sheetStates[row];
+                $submitDataDisplay.append('&nbsp;&nbsp;[ '+rowStates+' ]'+(row==rowsCount-1?'':',')+'<br/>');
+            }
+
+            $submitDataDisplay.append(']');
+        });
+
+        $("#J_timingIsFull").click(function(ev){
+            alert(sheet.isFull());
+        });
+
+        $("#J_timingGetCell").click(function(ev){
+
+            var cellIndex = $("#J_cellIndex").val().split(',');
+            var cellData = sheet.getCellState(cellIndex);
+            var $dataDisplay = $("#J_dataDisplay") ;
+
+            $dataDisplay.html("<b>Cell Data At ["+cellIndex+"] : </b>"+cellData);
+        });
+
+        $("#J_timingGetRow").click(function(ev){
+            var rowIndex = $("#J_rowIndex").val();
+            var rowData = sheet.getRowStates(rowIndex);
+            var $dataDisplay = $("#J_dataDisplay") ;
+
+            $dataDisplay.html("<b>Row Data At "+rowIndex+" : </b>[ "+rowData+" ]");
+        });
+    });
+</script>
+
+</body>
+</html>
