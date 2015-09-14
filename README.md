@@ -100,7 +100,7 @@ data : {
 sheetClass : "userAddedClass"
 ```
 
-###Specify a callback for strating selecting event:
+###Specify a callback for starting selecting event:
 ```javascript
 start : function(ev){
     //...
