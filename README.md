@@ -146,3 +146,6 @@ sheet.enable();
 * */
 sheet.isFull();
 ```
+
+## Example 
+A file example.html is offered to show the main functions of TimeSheet.js. Just download this whole project and unzip it, and open this html file in your browser. 
