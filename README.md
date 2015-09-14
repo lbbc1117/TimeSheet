@@ -7,6 +7,7 @@ A jQuery plugin for time planning
 It is simple to use TimeSheet:
 
 ```javascript
+// TimeSheet has to be binded on a TBODY element
 var sheet = $("#J_timedSheet").TimeSheet({
     data: {
         dimensions : [2,3],
