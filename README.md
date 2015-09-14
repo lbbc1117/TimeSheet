@@ -19,7 +19,7 @@ var sheet = $("#aTbodyElement").TimeSheet({
 });
 ```
 
-TimeSheet.js relies on jQuery, so Jquery must be included in your page before TimeSheet.js.
+TimeSheet.js relies on jQuery, so jQuery must be included in your page before TimeSheet.js.
 
 ```HTML
 <script type="text/javascript" src="/your/path/to/jquery-1.11.3.min.js"></script>
