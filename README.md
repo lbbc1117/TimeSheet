@@ -123,7 +123,26 @@ sheet.getSheetStates();
 sheet.setRemark(2,"说明");
 ```
 
-###Clean the sheet(set all cells to 0):
+###Clean the sheet (set all cells to 0):
 ```javascript
 sheet.clean();
+```
+
+###Disable the sheet:
+```javascript
+sheet.disable();
+```
+
+###Enable the sheet:
+```javascript
+sheet.enable();
+```
+
+###Check if the sheet is full:
+```javascript
+/*
+* 判断表格是否所有单元格状态都是1
+* @return ： true or false
+* */
+sheet.isFull();
 ```
