@@ -26,23 +26,60 @@ TimeSheet.js relies on jQuery, so Jquery must be included in your page before Ti
 There is a css file TimeSheet.css, and it is not a must when using TimeSheet.js. One can customize the style of sheets by their own css code.
 
 ## API
-Initialization options:
+###Initialization options:
 ```javascript
-opt :
+options :
 {
    data : {
-        // [rows numbers, columns numbers] 
-       dimensions : [7,8],  
-       // 
-       colHead : [{name:"name1",title:"",style:"width,background,color,font"},...]
-       rowHead : [{name:"name1",title:"",style:"height,background,color,font"},{name:"name2",title:"",style:"height,background,color,font"},...]
-       sheetHead : {name:"headName",style:"width,height,background,color,font"}
-       sheetData : [[0,1,1,0,0],[...],[...],...]    sheet数据，二维数组，行主序，索引(a,b),a-行下标，b-列下标，每个cell只有0,1两态，与dimensions对应
+       dimensions : ..., 
+       colHead : ...,
+       rowHead : ...,
+       sheetHead : ...,
+       sheetData : ...    
    },
 
+   // optional options
    sheetClass : "",
-   start : function(ev){...}
-   end : function(ev){...}
+   start : function(ev){...},
+   end : function(ev){...},
    remarks : false
+}
+```
+
+###To specify the row numbers and the column numbers:
+```javascript
+data : {
+   dimensions : [2,3]  //[row,column]
+}
+```
+
+###To specify the column headers:
+"name" is to set the text shown in the header
+"title" is to set the text shown when the header is hovered
+"style" is css code to customize the style of the header
+```javascript
+data : {
+   colHead : [
+   {name:"name1",title:"",style:"width,background,color,font"},
+   {name:"name2",title:"",style:"width,background,color,font"},...
+   ]
+}
+```
+Row headers shall be initialized the same way.
+
+###To specify the sheet header:
+"name" is to set the text shown in the header
+"style" is css code to customize the style of the header
+```javascript
+data : {
+   sheetHead : {name:"headName",style:"width,height,background,color,font"}
+}
+```
+
+###To initialize the sheet data:
+It is a 2D, row-major ordered array. The value of it's basic elements has to be 0 or 1.
+```javascript
+data : {
+   sheetData : [[0,1,1,0,0],[...],[...],...]
 }
 ```
