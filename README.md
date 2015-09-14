@@ -95,6 +95,31 @@ data : {
 }
 ```
 
+###Add class to sheetHead:
+```javascript
+sheetClass : "userAddedClass"
+```
+
+###Specify a callback for strating selecting event:
+```javascript
+start : function(ev){
+    //...
+}
+```
+
+###Specify a callback for ending selecting event:
+```javascript
+/*
+* 获取单元格状态
+* @param ev 
+* @param selectedArea : the index of the top-left cell and the bottom-right cell -- {topLeft:[0,1], bottomRight:[2,2]}
+* */
+end : function(ev, selectedArea){
+    //...
+}
+```
+
+
 ## API
 ###Get the state of a single cell:
 ```javascript
