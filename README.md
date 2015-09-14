@@ -8,7 +8,7 @@ It is simple to use TimeSheet:
 
 ```javascript
 // TimeSheet has to be binded on a TBODY element
-var sheet = $("#J_timedSheet").TimeSheet({
+var sheet = $("#aTbodyElement").TimeSheet({
     data: {
         dimensions : [2,3],
         colHead : [{name:"00",title:"00:00"},{name:"01",title:"01:00"},{name:"02",title:"02:00"}],
