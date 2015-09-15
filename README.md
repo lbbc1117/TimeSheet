@@ -118,6 +118,14 @@ end : function(ev, selectedArea){
 }
 ```
 
+###Init remarks area:
+```javascript
+remarks : {
+    title : "说明",     // The remarks header
+    default : "未设置"  // The default text of row remark
+},
+```
+
 
 ## API
 ###Get the state of a single cell:
