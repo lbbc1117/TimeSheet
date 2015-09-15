@@ -1,4 +1,4 @@
-# TimeSheet
+﻿# TimeSheet
 A jQuery plugin for time planning
 
 ![](http://static.oschina.net/uploads/space/2015/0914/165147_Xtq0_1047422.png)  
@@ -189,6 +189,11 @@ sheet.enable();
 * @return ： true or false
 * */
 sheet.isFull();
+```
+
+###Get the default remark text:
+```javascript
+sheet.getDefaultRemark();
 ```
 
 ## Example 
