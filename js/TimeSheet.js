@@ -251,7 +251,7 @@
          *
          *      sheetClass : "",
          *      start : function(ev){...}
-         *      end : function(ev){...}
+         *      end : function(ev, selectedArea){...}
          *      remarks : false
          * }
          *
@@ -603,6 +603,13 @@
                 sheetModel.set(0,{});
                 repaintSheet();
                 cleanRemark();
+            },
+
+            /*
+            * 获取 default remark
+            * */
+            getDefaultRemark : function(){
+                return sheetOption.remarks.default;
             },
 
             /*

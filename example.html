@@ -104,7 +104,7 @@
                 }
             }
             remarkHTML = rowRemark.join("，");
-            sheet.setRemark(row,remarkHTML===''?'未设置':remarkHTML);
+            sheet.setRemark(row,remarkHTML==='' ? sheet.getDefaultRemark() : remarkHTML);
         }
     };
 
