@@ -26,7 +26,7 @@ TimeSheet.js relies on jQuery, so jQuery must be included in your page before Ti
 <script type="text/javascript" src="/your/path/to/TimeSheet.js"></script>
 ```
 
-There is a css file TimeSheet.css, and it is not a must when using TimeSheet.js. One can customize the style of sheets by their own css code.
+There is a css file TimeSheet.css, and it is necessary but can be partially customized to change the looking.
 
 ## Initialization
         
