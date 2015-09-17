@@ -198,4 +198,5 @@ sheet.getDefaultRemark();
 
 ## Example 
 A file example.html is offered to show the main functions of TimeSheet.js. Just download this whole project and unzip it, and open this html file in your browser. 
+And a demo video is available at [TimeSheet Demo](http://v.youku.com/v_show/id_XMTMzNzcxMzI0NA==.html "@Youku")
 
