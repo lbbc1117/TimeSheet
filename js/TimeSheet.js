@@ -91,7 +91,7 @@
                     curRow = [];
                     for(var col=0; col<colNum; ++col){
                         curRow.push(new CSheetCell({
-                            state : sheetPrivate.sheetData ? (sheetPrivate.sheetData[row]?sheetPrivate.sheetData[row][col]:0) : 0
+                            state : sheetPrivate.sheetData ? (sheetPrivate.sheetData[row]?parseInt(sheetPrivate.sheetData[row][col]):0) : 0
                         }));
                     }
                     sheetPrivate.cells.push(curRow);
