@@ -57,14 +57,14 @@ options :
 }
 ```
 
-###To specify the row numbers and the column numbers:
+### To specify the row numbers and the column numbers:
 ```javascript
 data : {
    dimensions : [2,3]  //[row,column]
 }
 ```
 
-###To specify the column headers:
+### To specify the column headers:
 ```javascript
 data : {
     //"name" is to set the text shown in the header.
@@ -78,7 +78,7 @@ data : {
 ```
 Row headers shall be initialized the same way.
 
-###To specify the sheet header:
+### To specify the sheet header:
 ```javascript
 data : {
     //"name" is to set the text shown in the header.
@@ -87,7 +87,7 @@ data : {
 }
 ```
 
-###To initialize the sheet data:
+### To initialize the sheet data:
 It is a 2D, row-major ordered array. The value of it's basic elements has to be 0 or 1.
 ```javascript
 data : {
@@ -95,19 +95,19 @@ data : {
 }
 ```
 
-###Add class to sheetHead:
+### Add class to sheetHead:
 ```javascript
 sheetClass : "userAddedClass"
 ```
 
-###Specify a callback for starting selecting event:
+### Specify a callback for starting selecting event:
 ```javascript
 start : function(ev){
     //...
 }
 ```
 
-###Specify a callback for ending selecting event:
+### Specify a callback for ending selecting event:
 ```javascript
 /*
 * @param ev 
@@ -118,7 +118,7 @@ end : function(ev, selectedArea){
 }
 ```
 
-###Init remarks area:
+### Init remarks area:
 ```javascript
 remarks : {
     title : "说明",     // The remarks header
@@ -128,7 +128,7 @@ remarks : {
 
 
 ## API
-###Get the state of a single cell:
+### Get the state of a single cell:
 ```javascript
 /*
 * 获取单元格状态
@@ -138,7 +138,7 @@ remarks : {
 sheet.getCellState([0,0]);
 ```
 
-###Get the states of a single row:
+### Get the states of a single row:
 ```javascript
 /*
  * 获取某行所有单元格状态
@@ -148,7 +148,7 @@ sheet.getCellState([0,0]);
 sheet.getRowStates(2);
 ```
 
-###Get the states of whole sheet:
+### Get the states of whole sheet:
 ```javascript
 /*
  * 获取表格所有单元格状态
@@ -157,7 +157,7 @@ sheet.getRowStates(2);
 sheet.getSheetStates();
 ```
 
-###Set the remark text of a single row:
+### Set the remark text of a single row:
 ```javascript
 /*
 * 设置某行的说明文字
@@ -167,22 +167,22 @@ sheet.getSheetStates();
 sheet.setRemark(2,"说明");
 ```
 
-###Clean the sheet (set all cells to 0):
+### Clean the sheet (set all cells to 0):
 ```javascript
 sheet.clean();
 ```
 
-###Disable the sheet:
+### Disable the sheet:
 ```javascript
 sheet.disable();
 ```
 
-###Enable the sheet:
+### Enable the sheet:
 ```javascript
 sheet.enable();
 ```
 
-###Check if the sheet is full:
+### Check if the sheet is full:
 ```javascript
 /*
 * 判断表格是否所有单元格状态都是1
@@ -191,7 +191,7 @@ sheet.enable();
 sheet.isFull();
 ```
 
-###Get the default remark text:
+### Get the default remark text:
 ```javascript
 sheet.getDefaultRemark();
 ```
